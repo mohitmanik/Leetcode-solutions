@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool isValid(string st) {
+        stack<char>s; 
+
+        for(auto i: st){
+            if(i=='{' || i=='(' || i== '['){
+                s.push(i); 
+            }else {
+                if(s.empty()) return false; 
+                if(i=='}' && s.top()!= '{' || i== ')' && s.top()!= '(' || i==']' && s.top()!= '[') return false; 
+                else{
+                    s.pop(); 
+                }
+            }
+        }
+        if(!s.empty()) return false ; 
+        return true; 
+    }
+};
