@@ -1,0 +1,29 @@
+class Solution {
+public:
+   
+ void cal(string a  , string output , int ind , vector<string> phone ,vector< string> &ans){
+  if(ind>=a.size()){
+    ans.push_back(output); 
+    return; 
+  }
+
+  int val = a[ind]-'0'; 
+  string s  = phone[val]; 
+
+  for(char i: s ){
+    output.push_back(i); 
+    cal(a,output,ind+1,phone,ans); 
+    output.pop_back(); 
+  }
+}
+vector<string> letterCombinations(string a ){
+   int ind = 0; 
+   string output =""; 
+   vector<string>phone = {" ","", "abc" , "def" ,"ghi","jkl" , "mno" , "pqrs","tuv" ,"wxyz" }; 
+  vector< string> ans; 
+if(a.size() == 0) return ans; 
+    cal(a ,  output , ind ,phone,ans ); 
+   return ans; 
+}
+
+};
